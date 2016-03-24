@@ -6,7 +6,7 @@
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="photo">
-    <meta name="twitter:url" content="http://pasteboard.co/<%= imageName %>">
+    <meta name="twitter:url" content="<%= longURL %>">
     <meta name="twitter:title" content="Pasteboard &mdash; Uploaded Image">
     <meta name="twitter:description" content="Super simple and lightning fast image sharing. Upload clipboard images with Copy &amp; Paste and image files with Drag &amp; Drop">
     <meta name="twitter:image" content="<%= imageURL %>">
@@ -46,8 +46,8 @@
         <span>Embed URL:</span>
         <input type="text" value="<%= imageURL %>" readonly onClick="this.select();">
       </div>
-      <a href="https://twitter.com/intent/tweet?text=I%20uploaded%20an%20image&url=http%3A%2F%2Fpasteboard.co/<%= imageName %>" class="twitter button social" target="__blank" data-track="Twitter Image"  title="Share on Twitter"><span class="icon"></span></a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpasteboard.co/<%= imageName %>" class="facebook button social" target="__blank" data-track="Facebook Image" title="Share on Facebook"><span class="icon"></span></a>
+      <a href="https://twitter.com/intent/tweet?text=I%20uploaded%20an%20image&url=<%= longURL %>" class="twitter button social" target="__blank" data-track="Twitter Image"  title="Share on Twitter"><span class="icon"></span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=<%= longURL %>" class="facebook button social" target="__blank" data-track="Facebook Image" title="Share on Facebook"><span class="icon"></span></a>
       <a href="/images/<%= imageName %>/download" class="button" data-track="Download">Download image</a>
       <% if (isImageOwner) { %>
       <button class="cancel delete" data-track="Delete" data-image="<%= imageName %>">Delete image</button>
