@@ -10,7 +10,8 @@ socketConnection = (pasteboard) ->
 		getID: () -> return ID
 		init: () ->
 			return unless @isSupported()
-			connection = new WebSocket("ws://#{window.location.hostname}:#{SOCKET_PORT}")
+			protocol = if window.location.protocol == "http:" then "ws:" else "wss:"
+			connection = new WebSocket(protocol + "//#{window.location.hostname}:#{SOCKET_PORT}")
 			connection.onmessage = (e) ->
 				try
 					data = JSON.parse(e.data)
