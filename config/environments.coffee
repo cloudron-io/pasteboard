@@ -2,6 +2,7 @@
 # Environment Configuration
 ###
 auth = require "../auth"
+url = require "url"
 
 exports.init = (app, express) ->
   # General
@@ -18,8 +19,15 @@ exports.init = (app, express) ->
 
     # Set
     app.set "localrun", process.env.LOCAL or false
+    # The port where the server listens
     app.set "port", process.env.PORT or 3000
-    app.set "domain", process.env.ORIGIN or "http://pasteboard.co"
+
+    if process.env.ORIGIN
+        app.set "domain", process.env.ORIGIN
+        app.set "externalPort", url.parse(process.env.ORIGIN).port or 443
+    else
+        app.set "domain", "http://pasteboard.co"
+        app.set "externalPort", app.get "port"
 
     # Amazon S3 connection settings (using knox)
     if auth.amazon

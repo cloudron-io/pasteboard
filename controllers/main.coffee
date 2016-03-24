@@ -17,7 +17,7 @@ post = {}
 # The index page
 get.index = (req, res) ->
   viewData =
-    port: req.app.get "port"
+    port: req.app.get "externalPort"
     redirected: false
     useAnalytics: false
     trackingCode: ""
